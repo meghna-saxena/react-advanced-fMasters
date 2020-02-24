@@ -1,12 +1,18 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from "react";
 import { Link } from "@reach/router";
-import { css } from "@emotion/core";
+import { css, keyframes } from "@emotion/core";
 import colors from "./colors";
 
 const Navbar = () => {
   const [padding, setPadding] = useState(15);
-  const color = "pink";
+  //const color = "pink";
+
+  const spin = keyframes`
+  to {
+      transform: rotate(360deg)
+  }
+  `;
 
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
@@ -21,9 +27,12 @@ const Navbar = () => {
       <span
         css={css`
           font-size: 60px;
+          display: inline-block;
+          animation: 1s ${spin} linear infinite;
 
           &:hover {
             text-decoration: underline;
+            animation: 1s ${spin} linear infinite reverse;
           }
         `}
         role="img"
