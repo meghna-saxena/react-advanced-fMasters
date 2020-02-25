@@ -20,7 +20,7 @@ class ErrorBoundary extends Component {
   }
   render() {
     if (this.state.redirect) {
-      return <Redirect to="/" noThrow />;
+      return <Redirect to="/" />;
     }
 
     if (this.state.hasError) {
