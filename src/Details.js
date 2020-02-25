@@ -13,7 +13,6 @@ class Details extends React.Component {
       .animal(this.props.id)
       .then(({ animal }) => {
         this.setState({
-          url: animal.url,
           name: animal.name,
           animal: animal.type,
           location: `${animal.contact.address.city}, ${
@@ -22,6 +21,7 @@ class Details extends React.Component {
           description: animal.description,
           media: animal.photos,
           breed: animal.breeds.primary,
+          url: animal.url,
           loading: false
         });
       })
@@ -53,8 +53,8 @@ class Details extends React.Component {
           <ThemeContext.Consumer>
             {([theme]) => (
               <button
-                onClick={this.toggleModal}
                 style={{ backgroundColor: theme }}
+                onClick={this.toggleModal}
               >
                 Adopt {name}
               </button>
@@ -66,7 +66,7 @@ class Details extends React.Component {
               <h1>Would you like to adopt {name}?</h1>
               <div className="buttons">
                 <button onClick={this.adopt}>Yes</button>
-                <button onClick={this.toggleModal}>No, I am a monster</button>
+                <button onClick={this.toggleModal}>No</button>
               </div>
             </Modal>
           ) : null}
